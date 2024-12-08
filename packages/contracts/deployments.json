@@ -11,6 +11,7 @@
   "911867": {
     "chainId": "911867",
     "contracts": {
+      "EoaAccount": "0x45323966c67FFB884c5DE2B56668a332e7a3468b",
       "PublicKeyRegistry": "0xd78a91e41E6C15673686c263F29EE69b55aF5d1f",
       "SimpleAccountFactory": "0xE007d9EAE12d36150dC71fFbEb44D9310e7bE894",
       "UltraVerifier": "0xc500504b6b2F64D3CaE0FB92C22ef582e07Ecf5A"
