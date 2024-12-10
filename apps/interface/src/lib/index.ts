@@ -1,9 +1,10 @@
 import { browser } from "$app/environment";
 import { zklogin } from "@shield-labs/zklogin";
 import { QueryClient } from "@tanstack/svelte-query";
-import { ChainService, provider } from "./chain.js";
-import { JwtAccountService } from "./services/JwtAccountService.js";
+import { ChainService } from "./chain.js";
+import { Eip7702Service } from "./services/Eip7702Service.js";
 import { QueriesService } from "./services/QueriesService.svelte.js";
+import { WebAuthnService } from "./services/WebAuthnService.js";
 import { publicClient } from "./viemClients.js";
 
 export * from "./viemClients.js";
@@ -18,8 +19,9 @@ const queryClient = new QueryClient({
 
 const chain = new ChainService();
 const queries = new QueriesService(queryClient);
+const webAuthn = new WebAuthnService();
 const zkLogin = new zklogin.ZkLogin(new zklogin.PublicKeyRegistry(""));
-const jwtAccount = new JwtAccountService(publicClient, provider, zkLogin);
+const eip7702 = new Eip7702Service(zkLogin, publicClient);
 
 const APP_NAME = "zkLogin";
 export const lib = {
@@ -27,5 +29,6 @@ export const lib = {
   queries,
   chain,
   zkLogin,
-  jwtAccount,
+  eip7702,
+  webAuthn,
 };
